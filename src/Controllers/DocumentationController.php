@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\View;
 
 class DocumentationController extends Controller
 {
-
-
-
-
-
-
     public function routesInfo()
     {
         $result = [];
@@ -86,7 +80,7 @@ class DocumentationController extends Controller
             $k = ltrim($k1);
             if ($k !== '') {
                 $result = explode(" ", $k);
-                if ($result[0] !== 'auth' and count($result) <= 3 and count($result) !== 0) {
+                if ($result[0] !== 'auth' and $result[0] !== 'title:' and count($result) <= 3 and count($result) !== 0) {
                     $explode[] = [
                         'type' => $result[0],
                         'key' => str_replace('$', '', $result[1]),
