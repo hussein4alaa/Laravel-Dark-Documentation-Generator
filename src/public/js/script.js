@@ -220,14 +220,41 @@ function getAllData(url, method, index) {
                 }
             )
             .then(response => {
-                document.getElementById(
-                    `response_${index}`
-                ).innerHTML = JSON.stringify(response.data, null, 2);
+                document.getElementById(`response_${index}`).innerHTML =
+                    `<pre class="response">` +
+                    JSON.stringify(response.data, null, 2) +
+                    `</pre>`;
+                document.getElementById(`status_${index}`).innerHTML =
+                    response.status;
+                document.getElementById(`fullurl_${index}`).innerHTML =
+                    `
+                <span class="url-name">Full URL</span>
+                <div class="response">` +
+                    url +
+                    `
+                <button class="copy-btn" onclick='copyUrl("` +
+                    url +
+                    `")'>Copy</button>
+            </div>
+                `;
             })
             .catch(error => {
-                document.getElementById(
-                    `response_${index}`
-                ).innerHTML = JSON.stringify(error.response.data, null, 2);
+                document.getElementById(`response_${index}`).innerHTML =
+                    `<pre class="response">` +
+                    JSON.stringify(error.response.data, null, 2) +
+                    `</pre>`;
+                document.getElementById(`status_${index}`).innerHTML =
+                    error.response.status;
+                document.getElementById(`fullurl_${index}`).innerHTML =
+                    `
+                <span class="url-name">Full URL</span>
+                <div class="response">` +
+                    url +
+                    `
+                <button class="copy-btn" onclick='copyUrl("` +
+                    url +
+                    `")'>Copy</button>
+            </div>`;
             });
     }
 }
