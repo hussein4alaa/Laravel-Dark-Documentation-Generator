@@ -16,6 +16,7 @@ class DocumentationController extends Controller
 
     public function routesInfo()
     {
+        $result = [];
         $routes = collect(Route::getRoutes())->map(function ($route) {
             if(key_exists('controller', $route->getAction())) {
             $controller = $route->getAction()['controller'];
