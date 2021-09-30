@@ -74,23 +74,6 @@
 
 
 
-    <!-- Footer -->
-    <footer class="text-center text-lg-start bg-light text-muted">
-        <!-- Section: Social media -->
-
-        <!-- Section: Social media -->
-
-
-
-        <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-            © 2021 Copyright:
-            <a class="text-reset fw-bold" href="https://github.com/hussein4alaa">HusseinAlaa</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
-
 
 
     <script src="{{ asset('g4t/js/script.js') }}"></script>
