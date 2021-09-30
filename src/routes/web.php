@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use g4t\Documentation\Controllers\DocumentationController;
 
 
 $laravel = app();
