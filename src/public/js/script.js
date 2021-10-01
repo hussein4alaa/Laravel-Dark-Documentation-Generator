@@ -93,6 +93,7 @@ function getAllData(url, method, index) {
                 }
             )
             .then(response => {
+                console.log(response)
                 document.getElementById(`response_${index}`).innerHTML =
                     `
                 <span class="url-name">Response</span>
@@ -112,10 +113,10 @@ function getAllData(url, method, index) {
                 <span class="url-name">Full URL</span>
                 <div class="response">
                     ` +
-                    url +
+                    response.request.responseURL +
                     `
                 <button class="copy-btn" onclick='copyUrl("` +
-                    url +
+                response.request.responseURL +
                     `")'>Copy</button>
                 </div>
                 `;
@@ -139,12 +140,12 @@ function getAllData(url, method, index) {
                     `
                 <span class="url-name">Full URL</span>
                 <div class="response" onclick='copyUrl("` +
-                    url +
+                error.response.request.responseURL +
                     `")'>` +
-                    url +
+                    error.response.request.responseURL +
                     `
                     <button class="copy-btn" onclick='copyUrl("` +
-                    url +
+                    error.response.request.responseURL +
                     `")'>Copy</button>
                     </div>
                 `;
@@ -178,10 +179,10 @@ function getAllData(url, method, index) {
                     `
                 <span class="url-name">Full URL</span>
                 <div class="response">` +
-                    url +
+                response.request.responseURL +
                     `
                 <button class="copy-btn" onclick='copyUrl("` +
-                    url +
+                response.request.responseURL +
                     `")'>Copy</button>
             </div>
                 `;
@@ -197,10 +198,10 @@ function getAllData(url, method, index) {
                     `
                 <span class="url-name">Full URL</span>
                 <div class="response">` +
-                    url +
+                error.response.request.responseURL +
                     `
                 <button class="copy-btn" onclick='copyUrl("` +
-                    url +
+                error.response.request.responseURL +
                     `")'>Copy</button>
             </div>`;
             });
@@ -230,10 +231,10 @@ function getAllData(url, method, index) {
                     `
                 <span class="url-name">Full URL</span>
                 <div class="response">` +
-                    url +
+                response.request.responseURL +
                     `
                 <button class="copy-btn" onclick='copyUrl("` +
-                    url +
+                response.request.responseURL +
                     `")'>Copy</button>
             </div>
                 `;
@@ -249,10 +250,10 @@ function getAllData(url, method, index) {
                     `
                 <span class="url-name">Full URL</span>
                 <div class="response">` +
-                    url +
+                error.response.request.responseURL +
                     `
                 <button class="copy-btn" onclick='copyUrl("` +
-                    url +
+                error.response.request.responseURL +
                     `")'>Copy</button>
             </div>`;
             });
