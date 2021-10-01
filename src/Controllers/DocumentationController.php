@@ -9,12 +9,6 @@ use Illuminate\Support\Facades\View;
 
 class DocumentationController extends Controller
 {
-
-
-
-
-
-
     public function routesInfo()
     {
         $result = [];
