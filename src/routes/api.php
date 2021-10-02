@@ -1,7 +1,7 @@
 <?php
 
-use g4t\Documentation\Controllers\DocumentationController;
 use Illuminate\Support\Facades\Route;
+use g4t\Documentation\Controllers\DocumentationController;
 
 
 $laravel = app();
@@ -11,4 +11,3 @@ if ($version >= 8) {
 } else {
     Route::get(config('documentation.json_url'), 'DocumentationController@index');
 }
-

@@ -121,33 +121,22 @@
                                             @else
                                                 <span class="nullable">nullable</span>
                                             @endif
-                                            <span class="nullable"> | {{ $input['type'] }}</span>
+                                            <span class="nullable"> | {{ $input['label-type'] }}</span>
                                         </td>
                                         <td class="params-body-td">
-                                            @if ($input['type'] == 'string')
-                                                <input class="form-control" type="text" name="{{ $input['key'] }}"
-                                                    placeholder="{{ $input['key'] }}"
-                                                    {{ $input['required'] ? 'required' : '' }} />
-                                            @endif
-                                            @if ($input['type'] == 'int')
-                                                <input class="form-control" type="number"
-                                                    name="{{ $input['key'] }}" placeholder="{{ $input['key'] }}"
-                                                    {{ $input['required'] ? 'required' : '' }} />
-                                            @endif
-                                            @if ($input['type'] == 'email')
-                                                <input class="form-control" type="email" name="{{ $input['key'] }}"
-                                                    placeholder="{{ $input['key'] }}"
-                                                    {{ $input['required'] ? 'required' : '' }} />
-                                            @endif
-                                            @if ($input['type'] == 'password')
-                                                <input class="form-control" type="password"
-                                                    name="{{ $input['key'] }}" placeholder="{{ $input['key'] }}"
-                                                    {{ $input['required'] ? 'required' : '' }} />
-                                            @endif
-                                            @if ($input['type'] == 'file')
-                                                <input class="form-control" type="file" name="{{ $input['key'] }}"
-                                                    placeholder="{{ $input['key'] }}"
-                                                    {{ $input['required'] ? 'required' : '' }} />
+                                            @if ($input['type'] == 'longtext')
+                                            <textarea
+                                            name="{{ $input['key'] }}"
+                                            cols="30"
+                                            placeholder="{{ $input['key'] }}"
+                                            class="form-control"
+                                            {{ $input['required'] ? 'required' : '' }}
+                                            ></textarea>
+                                            @else
+                                            <input class="form-control" type="{{ $input['type'] }}" name="{{ $input['key'] }}"
+                                            placeholder="{{ $input['key'] }}"
+                                            {{ $input['required'] ? 'required' : '' }}
+                                            />
                                             @endif
                                         </td>
                                     </tr>

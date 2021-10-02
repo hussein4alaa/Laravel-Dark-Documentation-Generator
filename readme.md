@@ -31,6 +31,33 @@ return [
 ## Usage
 ##### when you create route in api.php this package will work 😉
 ##### if you send data in body or query params You should add some comments before function 😔
+
+
+#### You have two ways to use it
+#### 💥 1 - by using auto database schema detect
+### Example:
+```sh
+    /**
+     * start store function
+     * title: Create Users
+     * table: users
+     * remove: ["remember_token", "email_verified_at"]
+     * replace: {"password": "password", "email": "email", "image": "file"}
+     * end store function
+     */
+```
+### Comment Explain
+Comment | Description | Status
+--------- | ------- | -------
+`start FunctionName function` | you should write function Name in `FunctionName` | Required
+`title:` | This title will show in documentation , if this not found will use function name | not Required
+`table:` | to get table `users` schema |
+`remove:` | to remove columns from Docuumentation | Not Required
+`replace:` | to replace input types in Documentation | Not Required
+`end FunctionName function` | you should write function Name in `FunctionName` | Required
+
+
+### 💥 2 - manualy
 ### Example:
 ```sh
     /**
@@ -49,15 +76,12 @@ return [
 ### Comment Explain
 Comment | Description | Status
 --------- | ------- | -------
-`start FunctionName function` | you should write function Name in `FunctionName` | Required
 `auth` | if this function need auth , if you using auth middleware on route you don't need to add this comment | not Required
-`title:` | This title will show in documentation , if this not found will use function name | not Required
 `string $name required` | name column is string and required | 
 `int $number` | number column is integer and not required | 
 `email $email required` | email column is string and input type in documentation is email and required | 
 `password $password` | password column is string and input type in documentation is password and not required | 
 `file $image` | image column is string and input type in documentation is image and not required | 
-`end FunctionName function` | you should write function Name in `FunctionName` | Required
 
 
 
