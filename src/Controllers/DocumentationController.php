@@ -9,6 +9,72 @@ use Illuminate\Support\Facades\View;
 
 class DocumentationController extends Controller
 {
+
+
+    public function index()
+    {
+        $styles = public_path() . '/g4t';
+        $config = config_path() . '/documentation.php';
+        if (!file_exists($styles) or !(file_exists($config))) {
+            return response()->json([
+                "message" => "some files not found !",
+                "solution" => "php artisan vendor:publish --provider=g4t\Documentation\DocumentationServiceProvider"
+            ], 404);
+        }
+        return $this->routesInfo();
+    }
+
+
+
+    public function controllers()
+    {
+        $result = [];
+        $routes = collect(Route::getRoutes())->map(function ($route) {
+            if (key_exists('controller', $route->getAction())) {
+                $controller = $route->getAction()['controller'];
+                $pieces = explode("@", $controller);
+                if ($pieces[0] !== 'g4t\Documentation\Controllers\DocumentationController') {
+                    $middleware = $route->getAction()['middleware'];
+                    $controllers = explode("\\", $pieces[0]);
+                    if (in_array('api', $middleware)) {
+                        $data = [
+                            'name' => str_replace('Controller', '', $controllers[count($controllers) - 1]),
+                            'controller' => $pieces[0]
+                        ];
+                        return $data;
+                    }
+                }
+            }
+            return null;
+        });
+        foreach ($routes as $route) {
+            if ($route !== null) {
+                $result[] = $route;
+            }
+        }
+        return array_values(array_unique($result, SORT_REGULAR));
+    }
+
+
+
+    public function web()
+    {
+        $styles = public_path() . '/g4t';
+        $config = config_path() . '/documentation.php';
+        if (!file_exists($styles) or !(file_exists($config))) {
+            return response()->json([
+                "message" => "some files not found !",
+                "solution" => "php artisan vendor:publish --provider=g4t\Documentation\DocumentationServiceProvider"
+            ], 404);
+        }
+        $docs = $this->routesInfo();
+        $controllers = $this->controllers();
+        return view('documentation::web', [
+            'controllers' => $controllers,
+            'docs' => $docs
+        ]);
+    }
+
     public function routesInfo()
     {
         $result = [];
@@ -97,27 +163,25 @@ class DocumentationController extends Controller
                 }
 
 
-                if($result[0] == 'replace:') {
+                if ($result[0] == 'replace:') {
                     $replace = str_replace('replace:', '', $k);
                     $replace_array = json_decode($replace, true);
                     foreach ($table as $key => $column) {
-                        if(key_exists($column['key'], $replace_array)) {
+                        if (key_exists($column['key'], $replace_array)) {
                             $table[$key]['type'] = $replace_array[$column['key']];
                         }
                     }
                 }
 
-                if($result[0] == 'remove:') {
+                if ($result[0] == 'remove:') {
                     $replace = str_replace('remove:', '', $k);
                     $remove_array = json_decode($replace, true);
                     foreach ($table as $key => $column) {
-                        if(in_array($column['key'], $remove_array)) {
+                        if (in_array($column['key'], $remove_array)) {
                             unset($table[$key]);
                         }
                     }
                 }
-
-
             }
         }
 
@@ -167,7 +231,8 @@ class DocumentationController extends Controller
             return 'number';
         } else if (
             str_contains($column, 'longtext')
-            or str_contains($column, 'text')) {
+            or str_contains($column, 'text')
+        ) {
             return 'longtext';
         } else if (
             str_contains($column, 'tinyint')
@@ -175,15 +240,17 @@ class DocumentationController extends Controller
             return 'boolean';
         } else if (
             str_contains($column, 'datetime')
-            OR str_contains($column, 'timestamp')
+            or str_contains($column, 'timestamp')
         ) {
             return 'datetime-local';
         } else if (
             str_contains($column, 'date')
-            OR str_contains($column, 'year')) {
+            or str_contains($column, 'year')
+        ) {
             return 'date';
-        }else if (
-            str_contains($column, 'time')) {
+        } else if (
+            str_contains($column, 'time')
+        ) {
             return 'time';
         } else {
             return $column;
@@ -243,40 +310,5 @@ class DocumentationController extends Controller
             'auth' => $auth,
             'title' => $title
         ];
-    }
-
-
-
-
-
-    public function index()
-    {
-        $styles = public_path() . '/g4t';
-        $config = config_path() . '/documentation.php';
-        if (!file_exists($styles) or !(file_exists($config))) {
-            return response()->json([
-                "message" => "some files not found !",
-                "solution" => "php artisan vendor:publish --provider=g4t\Documentation\DocumentationServiceProvider"
-            ], 404);
-        }
-        return $this->routesInfo();
-    }
-
-
-
-    public function web()
-    {
-        $styles = public_path() . '/g4t';
-        $config = config_path() . '/documentation.php';
-        if (!file_exists($styles) or !(file_exists($config))) {
-            return response()->json([
-                "message" => "some files not found !",
-                "solution" => "php artisan vendor:publish --provider=g4t\Documentation\DocumentationServiceProvider"
-            ], 404);
-        }
-        $docs = $this->routesInfo();
-        return view('documentation::web', [
-            'docs' => $docs
-        ]);
     }
 }

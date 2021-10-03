@@ -4,17 +4,23 @@
     border: 0;
     color: #d0d0d0;
 }
+div#headingOne2 {
+    margin-bottom: 7px;
+    margin-top: 7px;
+}
+
         body {
             color: #e6e6e6;
             text-align: left;
             background-color: #3b3b3b;
         }
-
+        div#accordions {
+            margin-bottom: 4px;
+        }
         .btn.btn-link {
             background: #2b2b2b !important;
             border: 0 !important;
             border-radius: 0;
-            box-shadow: 0px 0px 5px 0px #000;
         }
 
         .logo-2 {
@@ -41,7 +47,6 @@
 
         .bg-light {
             background-color: #2b2b2b !important;
-            box-shadow: 0px 0px 5px 0px #000;
         }
 
         .container {
@@ -89,14 +94,12 @@
 
         .modal-content {
             background: #373737 !important;
-            box-shadow: 0px 0px 6px 0px #000;
         }
 
         button.btn.btn-secondary {
             width: 6pc;
             font-weight: bold;
             border-radius: 0;
-            box-shadow: 0px 0px 5px 0px #000;
         }
 
         .auth-btn {
@@ -108,7 +111,7 @@
         }
 
         .card-header {
-            background: #000 !important;
+            background: #1a1a1a !important;
             color: #c4c4c4 !important;
             border-radius: 0 !important;
         }
@@ -125,7 +128,6 @@
 
         .post-bar {
             background: #666666 !important;
-            box-shadow: 0px 0px 5px 0px #000 !important;
             /* background: hsl(154deg 44% 94%) !important;
         border: 1px solid hsl(154deg 100% 72%) !important; */
         }
@@ -134,21 +136,18 @@
             /* background: hsl(210deg 67% 95%) !important;
         border: 1px solid hsl(210deg 86% 71%) !important; */
             background: #666666 !important;
-            box-shadow: 0px 0px 5px 0px #000 !important;
         }
 
         .put-bar {
             /* background: hsl(28deg 67% 95%) !important;
         border: 1px solid hsl(33deg 86% 71%) !important; */
             background: #666666 !important;
-            box-shadow: 0px 0px 5px 0px #000 !important;
         }
 
         .delete-bar {
             /* background: hsl(0deg 67% 95%) !important;
         border: 1px solid hsl(0deg 86% 71%) !important; */
             background: #666666 !important;
-            box-shadow: 0px 0px 5px 0px #000 !important;
         }
 
         .btn-method {
@@ -156,7 +155,6 @@
             margin-right: 1pc;
             font-weight: bold;
             border-radius: 0;
-            box-shadow: 0px 0px 5px 0px #000;
         }
 
         span.title {
@@ -229,7 +227,6 @@
         }
 
         .btn:focus {
-            box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%);
         }
 
         .card-header {
@@ -292,7 +289,12 @@
             background: #fff0 !important;
         }
 
-
+        button.btn.btn-top {
+            border-radius: 0;
+            background: #3b3b3b;
+            color: #bbb;
+            font-weight: bold;
+        }
         .btn.btn-link {
             width: 100%;
             display: -webkit-inline-box;

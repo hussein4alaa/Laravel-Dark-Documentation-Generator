@@ -48,7 +48,6 @@
 
     <div id="{{ $route['index'] }}"
         class="collapse
-    {{ $key == 0 ? 'show' : '' }}
     {{ $route['method'] == 'GET' ? 'get-bar' : '' }}
     {{ $route['method'] == 'POST' ? 'post-bar' : '' }}
     {{ $route['method'] == 'PUT' ? 'put-bar' : '' }}

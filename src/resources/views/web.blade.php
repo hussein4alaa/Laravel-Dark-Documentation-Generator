@@ -30,11 +30,54 @@
     <div id="app">
 
         <div class="container">
-            @foreach ($docs as $key => $doc)
-                <div class="routes" id="accordion">
-                    @include('documentation::form', ['route' => $doc, 'key' => $key])
-                </div>
-            @endforeach
+
+
+
+
+            <div id="accordion">
+
+
+@foreach ($controllers as $key => $controller)
+
+
+
+                  <div class="card-header headers" id="headingOne2" data-toggle="collapse" data-target="#collapseOnes_{{ $key }}" aria-expanded="true" aria-controls="collapseOnes_{{ $key }}">
+                    <h5 class="mb-0">
+                      <button class="btn btn-top" >
+                        {{ $controller['name'] }}
+                      </button>
+                    </h5>
+                  </div>
+
+
+                  <div id="collapseOnes_{{ $key }}" class="collapse {{ $key == 0 ? 'show' : '' }}" aria-labelledby="headingOne2" data-parent="#accordions">
+                    <div class="card-body">
+                        @foreach ($docs as $key => $doc)
+                        @if ($doc['controller'] == $controller['controller'])
+                            <div class="routes" id="accordions">
+                                @include('documentation::form', ['route' => $doc, 'key' => $key])
+                            </div>
+                        @endif
+                        @endforeach                    </div>
+                  </div>
+
+
+
+@endforeach
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+
 
         </div>
 
