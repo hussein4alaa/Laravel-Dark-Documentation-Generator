@@ -1,7 +1,7 @@
 # Laravel Dark Documentation Generator 💥
 #### You can create Documentation for your api easily by using this library
 
-![me](https://github.com/hussein4alaa/Laravel-Dark-Documentation-Generator/blob/1.0/image.PNG)
+![me](https://github.com/hussein4alaa/Laravel-Dark-Documentation-Generator/blob/1.2/image.PNG)
 
 
 ## Installation:
