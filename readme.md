@@ -38,12 +38,12 @@ return [
 ### Example:
 ```sh
     /**
-     * start store function
+     * start functionName function
      * title: Create Users
      * table: users
      * remove: ["remember_token", "email_verified_at"]
      * replace: {"password": "password", "email": "email", "image": "file"}
-     * end store function
+     * end functionName function
      */
 ```
 ### Comment Explain
